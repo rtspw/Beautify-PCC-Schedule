@@ -1,0 +1,18 @@
+<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_10_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="98" width="98" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_3" height="104.186057" width="113.488391" y="-3.988371" x="-2.348835" stroke-width="1.5" stroke="#000" fill="#c41e3a"/>
+  <path id="svg_7" d="m-1.000695,32.261597l97.999055,-17.352313l0,86.761622l-97.999055,0z" stroke-width="1.5" stroke="#c41e3a" fill="#ffcf0c"/>
+  <text filter="url(#svg_10_blur)" transform="matrix(1.68392, 0, 0, 1.62537, 13.3649, -30.2826)" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="Oswald, sans-serif" font-size="24" id="svg_10" y="66.858709" x="-5.231248" stroke-width="0" stroke="#ffcf0c" fill="#c41e3a">BPCC</text>
+ </g>
+</svg>

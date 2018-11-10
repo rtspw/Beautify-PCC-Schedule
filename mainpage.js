@@ -44,7 +44,7 @@ setStyle(body, {
 var termLabel = $('font');
 setStyle(termLabel, {
   'font-weight': 'bold',
-  'color': '#AD5D5D',
+  'color': '#D65076',
 });
 
 var allSelects = $$('select');
