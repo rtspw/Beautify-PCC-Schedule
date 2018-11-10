@@ -1,15 +1,16 @@
 {
   "manifest_version": 2,
   "name": "Beautify PCC Search",
-  "version": "1.0.0",
+  "version": "1.0.1",
 
   "description": "Changes the styling on the PCC schedule search to give a more modern feel.",
 
   "icons": {
-    "48": "icons/96-icon.svg",
-    "96": "icons/96-icon.svg"
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+	"128": "icons/128.png"
   },
-
+  
   "content_scripts": [
     {
       "matches": ["*://selfservice.pasadena.edu/prod/pw_psearch_sched.p_search"],
