@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Beautify PCC Search",
-  "version": "1.0.1",
+  "version": "1.1.0",
 
   "description": "Changes the styling on the PCC schedule search to give a more modern feel.",
 
@@ -9,6 +9,13 @@
     "48": "icons/48.png",
     "96": "icons/96.png",
 	"128": "icons/128.png"
+  },
+  
+  
+  "applications": {
+    "gecko": {
+      "id": "beautifypccsearchss@pcc-bs.com"
+    }
   },
   
   "content_scripts": [

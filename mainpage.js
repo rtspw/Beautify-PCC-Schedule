@@ -12,6 +12,7 @@ function $$$(query) {
   return document.getElementsByName(query);
 }
 
+// Sets the style for a single node
 function setStyle(obj, style) {
   if(obj === null) throw new Error('Null object');
   for (property in style) {
@@ -19,96 +20,107 @@ function setStyle(obj, style) {
   }
 }
 
+// Sets the style for a collection of nodes
 function setStyleAll(objCollection, style) {
   if(objCollection === null) throw new Error('Null Collection');
   objCollection.forEach((obj) => {
     setStyle(obj, style);
   });
 }
-  
-  
-// Generic Selectors
 
-var wildcardSelector = $('*');
-setStyle(wildcardSelector, {
+// Set the style for the first node found by the selector
+// Style should be an object with css properties
+function $setStyle(selector, style) {
+  var target = $(selector);
+  setStyle(target, style);
+}
+
+// Converts a css property object into a text node
+// which is inserted into the document head as a style node
+function addStyleRule(styleNode, targetStr, cssObj) {
+  var finalCSS = '';
+  finalCSS += targetStr + '{';
+  for (var property in cssObj) {
+    finalCSS += property + ': ' + cssObj[property] + ';';
+  }
+  finalCSS += '}'
+  styleNode.appendChild(document.createTextNode(finalCSS));
+}
+
+var styleNode = document.createElement('style');
+  
+// Generic Selectors - - - - - - - - - - - - - - - - - - - - - -
+
+$setStyle('*', {
   'margin': 0,
   'padding': 0,
   'box-sizing': 'border-box',
 });
 
-var body = $('body')
-setStyle(body, {
+$setStyle('body', {
   'padding-bottom': '35px',
-});
+})
 
-var termLabel = $('font');
-setStyle(termLabel, {
+// Selects label for the term name
+$setStyle('font', {
   'font-weight': 'bold',
   'color': '#D65076',
 });
-
-var allSelects = $$('select');
-setStyleAll(allSelects, {
+  
+addStyleRule(styleNode, 'select', {
   'border': 'none',
   'border-left': '3px solid rgba(0, 165, 145, 0.5)',
 });
-
-var options = $$('option');
-setStyleAll(options, {
+  
+addStyleRule(styleNode, 'option', {
   'padding': '4px 7px',
   'border-bottom': '1px solid #eeeeee',
   'color': '#3d3d3d',
 });
-
-var textInputs = $$('input[type=text]');
-setStyleAll(textInputs, {
+  
+addStyleRule(styleNode, 'input[type=text]', {
   'border-radius': '2px',
   'border': '1px solid #999',
   'padding': '2px',
   'color': '#778899',
 });
 
+// Top half tables - - - - - - - - - - - - - - - - - - - - - -
 
-// Top half tables
-
-var mainTable = $('.search_table');
-setStyle(mainTable, {
+$setStyle('.search_table', {
   'margin': 'auto',
   'border': 'none',
 });
-mainTable.setAttribute('width', 1000);
+$('.search_table').setAttribute('width', 1000);
 
-var searchHeaderLeft = $('.search_header_left');
-setStyle(searchHeaderLeft, {
+$setStyle('.search_header_left', {
   'border': 'none',
   'width': '35%',
   'padding': '0 30px',
   'padding-left': '50px',
 });
 
-var searchHeaderLeftSelect = $('.search_header_left select');
-setStyle(searchHeaderLeftSelect, {
+$setStyle('.search_header_left select', {
   'margin-top': '10px',
 });
 
-var searchHeader = $('.search_header');
-setStyle(searchHeader, {
+$setStyle('.search_header', {
   'width': '100%',
   'padding-right': '35px',
 })
 
-var searchHeaderText = $$('.search_header td');
-setStyleAll(searchHeaderText, {
+var searchHeaderText = '.search_header td';
+addStyleRule(styleNode, searchHeaderText, {
   'padding': '5px 0',
 })
 
-var headerBox = $('.search_table table:first-of-type:nth-child(1)');
-setStyle(headerBox, {
+var headerBox = '.search_table table:first-of-type:nth-child(1)';
+$setStyle(headerBox, {
   'width': '100%',
 });
 
 
-// Bottom half tables
+// Bottom half tables - - - - - - - - - - - - - - - - - - - - - -
 
 var allTables = $$('table');
 
@@ -135,13 +147,16 @@ setStyleAll(searchHeaderRight, {
   'padding-right': '20px',
 });
 
+searchHeaderRight[0].setAttribute('width', '250');
+searchHeaderRight[8].setAttribute('width', '10');
+  
 var lowerTableRows = $$('table:nth-child(2) tr');
 setStyleAll(lowerTableRows, {
   'padding': '100px 0',
 });
 
 
-// Modifying Specific Selects
+// Modifying Specific Selects - - - - - - - - - - - - - - - - - - - - - -
   
 var courseLevelSelect = $$$('sel_schd')[1];
 courseLevelSelect.setAttribute('size', '3');
@@ -160,7 +175,7 @@ var scheduleTypeSelect = $$$('sel_ism')[1];
 scheduleTypeSelect.setAttribute('size', '10');
 
 
-// Bottom Button
+// Bottom Button - - - - - - - - - - - - - - - - - - - - - -
 
 var bottomButtons = $$('center')[2];
 setStyle(bottomButtons, {
@@ -168,7 +183,8 @@ setStyle(bottomButtons, {
 });
 
 
-// Bottom text
+// Bottom text - - - - - - - - - - - - - - - - - - - - - -
+  
 var releaseText = $('.releasetext');
 setStyle(releaseText, {
   'position': 'absolute',
@@ -176,7 +192,6 @@ setStyle(releaseText, {
 });
 releaseText.textContent = 'pasadena city college 8.1 ❤ rtspw';
 
-searchHeaderRight[0].setAttribute('width', '250');
-searchHeaderRight[8].setAttribute('width', '10');
+document.head.appendChild(styleNode);
   
 })();
